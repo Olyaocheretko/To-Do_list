@@ -95,6 +95,9 @@ img {vertical-align: top;}
   border-radius: 5px;
   overflow-x: auto;
 }
+.list__input._active {
+  background-color: #d8e2ef;
+}
 textarea.list__input {
   margin-left: 0;
   resize: none;

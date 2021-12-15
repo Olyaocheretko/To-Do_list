@@ -46,7 +46,6 @@ function renderToDoList(filteredArray) {
 
   filteredArray.forEach(function (userGroup) {
     let userId = userGroup[0].userId
-
     let toDoBlock = document.createElement('form')
     toDoBlock.className = `list`
     toDoBlock.innerHTML = `
@@ -62,7 +61,6 @@ function renderToDoList(filteredArray) {
 
     for (let i = 0; i < userGroup.length; i++) {
       let olItem = document.querySelector(`.list__body-${userId}`)
-
       let liLast = document.createElement('li')
       liLast.className = 'list__row'
       liLast.innerHTML = `
@@ -76,6 +74,7 @@ function renderToDoList(filteredArray) {
     }
 
     showNewItemBlock()
+    editToDo()
   })
 }
 
@@ -89,6 +88,22 @@ function showNewItemBlock() {
       button.onclick = function(event) {
         event.preventDefault();
         this.nextElementSibling.classList.toggle('_active')
+      }
+    }
+  })
+}
+
+function editToDo() {
+  const editButtons = document.querySelectorAll('._btn-edit')
+
+  editButtons.forEach (function (editButton) {
+    editButton.onclick = function (event) {
+      event.preventDefault();
+      let activeInput = editButton.parentElement.previousElementSibling
+
+      if (activeInput.disabled) {
+        activeInput.disabled = ''
+        activeInput.classList.add('_active')
       }
     }
   })
