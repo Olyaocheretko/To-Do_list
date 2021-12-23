@@ -3,9 +3,7 @@ const requiredUserIds = [2, 4, 6]
 const requiredToDoListItemsQuantity = 5
 let filteredToDoList = []
 
-window.onload = function() {
-  showToDoList(url)
-}
+window.onload = () => showToDoList(url)
 
 function showToDoList(url) {
   const getRequest = new XMLHttpRequest
@@ -133,7 +131,6 @@ function addToDoItem(item, userGroup, userId) {
       completed: item.completed
     })
   })
-      .then((response) => response.json())
       .then(() => {
         renderUserToDoItems(userId, userGroup)
       })
@@ -213,7 +210,6 @@ function deleteToDoItem(itemId, userId) {
   fetch(url, {
     method: 'DELETE'
   })
-      .then((response) => response.json())
       .then(() => {
         let updatedUserGroup = deleteToDoItemFromFilteredArray(itemId)
         renderUserToDoItems(userId, updatedUserGroup)
